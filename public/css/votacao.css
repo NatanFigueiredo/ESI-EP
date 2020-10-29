@@ -5,7 +5,7 @@ main.votacao{
     /*align-items: center;*/
 }
 
-p.titulo{
+.votacao>form>.titulo{
     text-align: center;
     font-size: 50px;
     font-weight: bold;

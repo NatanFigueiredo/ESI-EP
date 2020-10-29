@@ -15,8 +15,8 @@ class EleicaosController extends Controller
      */
     public function index()
     {
-        $eleicao = Eleicao::all();
-        return view('eleicao',compact($eleicao));
+        $eleicoes = Eleicao::all();
+        return view('eleicao.eleicao_geral',compact($eleicoes));
     }
 
     /**
@@ -26,7 +26,7 @@ class EleicaosController extends Controller
      */
     public function create()
     {
-        return view('eleicao.geral');
+        return $this->index();
     }
 
     /**

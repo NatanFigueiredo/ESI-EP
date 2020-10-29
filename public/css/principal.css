@@ -5,9 +5,6 @@ main.principal{
     justify-content: center;
 }
 
-.content{
-
-}
 .recepcao{
     display: flex;
     flex-direction: column;

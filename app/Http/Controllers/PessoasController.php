@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
 class PessoasController extends Controller
@@ -13,7 +14,8 @@ class PessoasController extends Controller
      */
     public function index()
     {
-        //
+        $pessoa = Pessoa::all();
+        return view('pessoa.pessoa_geral', compact('pessoa'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PessoasController extends Controller
      */
     public function create()
     {
-        //
+        return $this->index();
     }
 
     /**

@@ -1,0 +1,34 @@
+main.indexPessoas, main.indexEleicoes{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.busca{
+    width: 75%;
+    padding: 10px 30px
+}
+
+.table{
+    width: 100% !important;
+}
+
+.busca>.titulo{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px black;
+}
+
+.form-group, .botoes{
+    display: inline-block;
+}
+
+.textBox{
+    width: 500px !important;
+}
+
+
+

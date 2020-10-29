@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EleicaosController;
 use App\Http\Controllers\LoginsController;
+use App\Http\Controllers\PessoasController;
 use App\Http\Controllers\TelaPrincipalController;
 use App\Http\Controllers\VotacaosController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +26,10 @@ Route::get('/login',[LoginsController::class,'create']);
 Route::post('/login',[LoginsController::class,'buscaLogin'])->name('login');
 
 Route::get('/principal',[TelaPrincipalController::class,'create']);
+
+Route::get('/pessoa',[PessoasController::class,'create']);
+
+Route::get('/eleicoes',[EleicaosController::class,'create']);
 
 
 
