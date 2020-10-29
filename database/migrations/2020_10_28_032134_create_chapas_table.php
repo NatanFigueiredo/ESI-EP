@@ -14,8 +14,8 @@ class CreateChapasTable extends Migration
     public function up()
     {
         Schema::create('chapas', function (Blueprint $table) {
-            $table->id('idchapa');
-            $table->foreignId('eleicao')->constrained('eleicaos','ideleicao')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('eleicao')->constrained('eleicaos')->onDelete('cascade');
             $table->string('nome',50);
             $table->string('cargo',100);
             $table->integer('votos',)->default('0');

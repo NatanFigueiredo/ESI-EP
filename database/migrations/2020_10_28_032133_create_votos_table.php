@@ -14,8 +14,8 @@ class CreateVotosTable extends Migration
     public function up()
     {
         Schema::create('votos', function (Blueprint $table) {
-            $table->foreignId('pessoa')->constrained('pessoas','idpessoa')->onDelete('cascade');
-            $table->foreignId('eleicao')->constrained('eleicaos','ideleicao')->onDelete('cascade');
+            $table->foreignId('pessoa')->constrained('pessoas')->onDelete('cascade');
+            $table->foreignId('eleicao')->constrained('eleicaos')->onDelete('cascade');
             $table->date('data_voto');
             $table->primary(['pessoa','eleicao']);
             $table->timestamps();

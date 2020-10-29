@@ -15,8 +15,8 @@ class CreateCandidatosTable extends Migration
     {
         Schema::create('candidatos', function (Blueprint $table) {
 
-            $table->foreignId('candidato')->constrained('pessoas','idpessoa')->onDelete('cascade');
-		    $table->foreignId('chapa')->constrained('chapas','idchapa')->onDelete('cascade');
+            $table->foreignId('candidato')->constrained('pessoas')->onDelete('cascade');
+		    $table->foreignId('chapa')->constrained('chapas')->onDelete('cascade');
 		    $table->string('posicao',45);
 		    $table->primary(['candidato','chapa']);
             $table->timestamps();

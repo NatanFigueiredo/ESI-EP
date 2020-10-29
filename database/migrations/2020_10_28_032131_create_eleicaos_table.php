@@ -15,7 +15,7 @@ class CreateEleicaosTable extends Migration
     {
         Schema::create('eleicaos', function (Blueprint $table) {
 
-            $table->id('ideleicao');
+            $table->id();
             $table->date('data_inicio');
             $table->date('data_fim');
             $table->string('titulo',45);

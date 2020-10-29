@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Login extends Model
 {
-    protected $fillable = ['idpessoa','login','senha','status','lastLogin','level'];
+    protected $fillable = ['id','login','senha','status','lastLogin','level'];
 }

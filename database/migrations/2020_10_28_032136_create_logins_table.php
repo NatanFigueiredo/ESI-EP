@@ -15,7 +15,7 @@ class CreateLoginsTable extends Migration
     {
         Schema::create('logins', function (Blueprint $table) {
 
-            $table->foreignId('idpessoa')->constrained('pessoas','idpessoa')->onDelete('cascade');
+            $table->foreignId('id')->constrained('pessoas')->onDelete('cascade');
             $table->string('login',45);
             $table->string('senha',100);
             $table->integer('status',)->default('1');
@@ -24,8 +24,7 @@ class CreateLoginsTable extends Migration
             $table->timestamps();
             $table->string('token_access')->nullable();
 
-            $table->primary('idpessoa');
-            
+            $table->primary('id');
         });
     }
 
