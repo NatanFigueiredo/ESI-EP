@@ -1,0 +1,33 @@
+main.dadosChapa{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+main>.titulo{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px black;
+}
+
+div.chapa{
+    margin: 10px 0px 20px 0px; 
+}
+
+main.dadosChapa > div.botoes{
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+button.salvar{
+    background-color: transparent;
+    border: none;
+    color: none;
+    margin: 0;
+    border: 0px;
+}

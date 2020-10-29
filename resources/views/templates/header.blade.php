@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/principal.css') }}">
     {{-- CSS de Pessoa --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/pessoa.css') }}">
+    {{-- CSS de Eleicao --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/chapa.css') }}">
     {{-- CSS de votacao --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/votacao.css') }}">
 
