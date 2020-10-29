@@ -17,9 +17,17 @@ span.sys{
 }
 
 .spacer{
-    flex:1;
+    flex:1 !important;
 }
 
 a.nav-link{
-    color:white;
+    color:white !important;
+}
+
+img.icon{
+    width: 30px;
+    margin: 0px 5px;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius:5px
 }

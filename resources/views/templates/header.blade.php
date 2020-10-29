@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/layout.css') }}">
     {{-- CSS da Tela Principal --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/principal.css') }}">
+    {{-- CSS de Pessoa --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/pessoa.css') }}">
     {{-- CSS de votacao --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/votacao.css') }}">
 
@@ -20,7 +22,7 @@
     <header class="header">
 
         <nav class="navbar navbar-expand-lg navbar-light barraMenu">
-            <a clas="navbar-brand" href="#">
+            <a href="{{ url('/principal') }}" class="navbar-brand" href="#">
                 <span class="sys">Sys</span>  
                 <span class="cpe">CPE</span>
             </a>
@@ -43,8 +45,8 @@
                         Entidade
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Membros</a>
-                            <a class="dropdown-item" href="#">Eleições</a>
+                            <a href="{{ url('/pessoa') }}" class="dropdown-item" href="#">Membros</a>
+                            <a href="{{ url('/eleicoes') }}" class="dropdown-item" href="#">Eleições</a>
                         </div>
                     </li>
 

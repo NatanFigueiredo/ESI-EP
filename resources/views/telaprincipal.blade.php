@@ -9,7 +9,7 @@
         </div>
         <div class="atalhos">
             <p class="texto">Aqui estão alguns atalhos que podem ser uteis para você</p>
-            <button type="button" name="btnDados" class="btn btn-primary">Meus Dados</button>
+            <a href="" class="btn btn-primary">Meus Dados</a>
             <button type="button" name="btnVotar" class="btn btn-primary">Votar em eleição</button>
         </div>
     </div>
