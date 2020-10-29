@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChapasController;
 use App\Http\Controllers\EleicaosController;
 use App\Http\Controllers\LoginsController;
 use App\Http\Controllers\PessoasController;
@@ -28,8 +29,16 @@ Route::post('/login',[LoginsController::class,'buscaLogin'])->name('login');
 Route::get('/principal',[TelaPrincipalController::class,'create']);
 
 Route::get('/pessoa',[PessoasController::class,'create']);
+Route::get('/pessoa/novo',[PessoasController::class,'createNew']);
+Route::post('/pessoa/novo',[PessoasController::class,'store'])->name('membro.novo');
+
+Route::get('/pessoa/editar/{id}',[PessoasController::class,'edit'])->name('membro.consultar');
+Route::post('/pessoa/editar/{id}',[PessoasController::class,'update'])->name('membro.editar');
+
 
 Route::get('/eleicoes',[EleicaosController::class,'create']);
+
+Route::get('/eleicoes/novachapa',[ChapasController::class,'create']);
 
 
 

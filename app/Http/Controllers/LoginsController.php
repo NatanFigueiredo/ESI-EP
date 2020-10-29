@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Login;
+use App\Models\Pessoa;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,13 @@ class LoginsController extends Controller
     public function create()
     {
         return view('login');
+    }
+
+    public function store($id){
+        $pessoa = Pessoa::find($id);
+
+        
+        
     }
 
     public function buscaLogin(Request $request){

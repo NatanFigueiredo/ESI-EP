@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" id="funcao">
             </div>
             <div class="botoes">
-                <a href="" >
+                <a href=" {{ url('/pessoa/novo') }} " >
                     <img class="icon" src="{!! asset('img/icons/plus.png') !!}">
                 </a>
                 <a href="" >
@@ -37,7 +37,7 @@
             <tbody>
                 @foreach($pessoa as $p)
                 <tr>
-                    <td>{{$p->idpessoa}}</td>
+                    <td>{{$p->id}}</td>
                     @if (!is_null($p->nomesocial))
                         <td>{{$p->nomesocial}}</td>
                     @else
@@ -46,7 +46,9 @@
                     <td>{{$p->email}}</td>
                     <td>{{$p->funcao}}</td>
                     <td class="text-center">
-                        
+                        <a href="{{ route('membro.consultar',['id' => $p->id]) }}" >
+                            <img class="icon" src="{!! asset('img/icons/edit.png') !!}">
+                        </a>
                     </td>
                 </tr>
                 @endforeach
