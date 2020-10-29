@@ -22,6 +22,7 @@ class CreateLoginsTable extends Migration
             $table->date('lastLogin');
             $table->integer('level',)->default('1');
             $table->timestamps();
+            $table->string('token_access')->nullable();
 
             $table->primary('idpessoa');
             
