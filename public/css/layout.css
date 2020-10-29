@@ -1,0 +1,25 @@
+.barraMenu{
+    background-color: #15385d;
+    color: white;
+    
+}
+
+span.cpe{
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+}
+
+span.sys{
+    font-size:30px;
+    margin: auto 0 auto 0;
+    color: white;
+}
+
+.spacer{
+    flex:1;
+}
+
+a.nav-link{
+    color:white;
+}

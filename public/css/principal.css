@@ -1,0 +1,23 @@
+main.principal{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.content{
+    border: 1px solid red;
+
+}
+.recepcao{
+    display: flex;
+    justify-content: flex-start;
+
+}
+.atalhos{
+}
+
+.atena{
+    border: 1px solid green;
+
+}

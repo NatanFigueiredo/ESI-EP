@@ -1,0 +1,36 @@
+/* GERAL */
+main.votacao{
+    display:flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+p.titulo{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    border-bottom: 2px black;
+}
+
+
+/* CARD de Cargos */
+div.cargo{
+    margin: 10px 0px;
+    width: 750px;
+}
+
+p.cargo{
+    font-size: 30px;
+    text-align: center;
+}
+
+.card-body{
+    padding: 50px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.table{
+    margin: 10px;
+    width: 100%;
+}
