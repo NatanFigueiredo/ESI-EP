@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapa extends Model
 {
-    use HasFactory;
+    protected $fillable = ['eleicao','nome','cargo','votos','flag_status'];
 }

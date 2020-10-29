@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Eleicao extends Model
 {
-    use HasFactory;
+    protected $fillable = ['data_inicio','data_fim','titulo','flag_status'];
 }

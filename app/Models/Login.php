@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Login extends Model
 {
-    use HasFactory;
+    protected $fillable = ['idpessoa','login','senha','status','lastLogin','level'];
 }
