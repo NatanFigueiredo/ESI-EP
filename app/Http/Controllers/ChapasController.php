@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidato;
+use App\Models\Cargo;
+use App\Models\Chapa;
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
 class ChapasController extends Controller
@@ -21,9 +25,10 @@ class ChapasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create($id)
+    {   
+        $cargos = Cargo::all()->where('eleicao',$id);
+        return view('eleicao.chapa',compact('cargos'),compact('id'));
     }
 
     /**
@@ -32,9 +37,44 @@ class ChapasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $dados = $request->validate([
+            'cargo' => 'required',
+            'nome' => 'required',
+            'cpf_t' => 'required',
+            'cpf_s' => '',
+        ]);
+
+        $storeData = [
+            'cargo' => $request->cargo,
+            'nome' => $request->nome,
+        ];
+
+        $chapa = Chapa::create($storeData);
+
+        $cpf = $request->cpf_t;        
+        $titular = Pessoa::where('cpf',$cpf)->firstOrFail();;
+        $storeData = [
+            'candidato' => $titular->id,
+            'chapa' => $chapa->id,
+            'posicao' => 'Titular',
+        ];
+        $candidato = Candidato::create($storeData);
+        if ($request->cpf_s)
+        {
+            $cpf = $request->cpf_s;        
+            $titular = Pessoa::where('cpf',$cpf)->firstOrFail();;
+            $storeData = [
+                'candidato' => $titular->id,
+                'chapa' => $chapa->id,
+                'posicao' => 'Suplente',
+            ];
+            
+            $candidato = Candidato::create($storeData);
+        }
+
+        return redirect('/eleicoes');
     }
 
     /**
@@ -45,7 +85,7 @@ class ChapasController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

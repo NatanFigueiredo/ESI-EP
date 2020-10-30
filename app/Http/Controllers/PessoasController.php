@@ -67,6 +67,9 @@ class PessoasController extends Controller
         return redirect('/pessoa');
     }
 
+    public function buscaCPF($cpf){
+    }
+
     public function edit($id)
     {
         $pessoa = Pessoa::findOrFail($id);
