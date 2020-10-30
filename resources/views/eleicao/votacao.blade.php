@@ -6,13 +6,13 @@
     </div>
 
     <div class="cedula card">
-    <form action="" method="post">
+    <form action= "{{route('eleicao.registravoto', ['eleicao'=>$eleicao->id])}}" method="post">
         @csrf
         @foreach ($arrayFinal as $cargo)
         <div class="form-row justify-content-center">
             <div class="form-group cargoCedula col-md-6">
                 <label for="cargo">{{ $cargo['cargo'] }}</label>
-                <select name="flag_status" class="form-control" id="flag_status" required"> 
+                <select name="{{ $cargo['id'] }}" class="form-control" id="flag_status" required"> 
                     @foreach ($cargo['chapas'] as $chapa)
                     <option value="{{$chapa['id']}}">{{$chapa['nome']}} | 
                         @if($chapa['titular'])

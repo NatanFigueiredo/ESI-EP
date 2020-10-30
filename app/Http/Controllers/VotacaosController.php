@@ -7,6 +7,8 @@ use App\Models\Cargo;
 use App\Models\Chapa;
 use App\Models\Eleicao;
 use App\Models\Pessoa;
+use App\Models\Voto;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class VotacaosController extends Controller
@@ -28,6 +30,16 @@ class VotacaosController extends Controller
      */
     public function create($id)
     {
+        if (!session('id')) 
+            return redirect('/login');
+        
+        $votou = Voto::where('pessoa',session('id'))->where('eleicao',$id)->first();
+        if (isset($votou)) 
+        {
+            $mensagem = 'Você já votou nessa eleição';
+            return redirect('/eleicoes')->with('mensagem');
+        }
+
         $eleicao = Eleicao::findOrFail($id);
         $arrayFinal = array();
         $cargos = Cargo::all()->where('eleicao',$id);
@@ -71,15 +83,29 @@ class VotacaosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //Uma requisão com [id do membro, id da eleição, [chapas votadas]] onde chapas votadas = ['idcargo'=>'idchapa' ou 0 para branco]
+    public function store(Request $request, $id) //Uma requisão com [id do membro, id da eleição, [chapas votadas]] onde chapas votadas = ['idcargo'=>'idchapa' ou 0 para branco]
     {
-        $userID = $request->membro;
-        $electionID = $request->eleicao;
-        $chapasVotoadas = $request->chapasVotadas;
-        foreach($chapasVotoadas as $chapa)
-        {
-            
+        $votos = $request->all();
+        unset($votos['_token']);
+        
+        foreach ($votos as $voto)
+        {   
+            if ($voto != 0)
+            {
+                $chapa = Chapa::findOrFail($voto);
+                Chapa::whereId($voto)->update(['votos'=>$chapa->votos+1]);
+            }
         }
+
+        $storeData = [
+            'pessoa' => session('id'),
+            'eleicao' => $id,
+            'data_voto' => date('d-m-y'),
+        ];
+        $voto = Voto::create($storeData);
+
+        session(['id' => null]);
+        return redirect('/login');
     }
 
     /**

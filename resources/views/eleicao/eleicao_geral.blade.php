@@ -4,12 +4,15 @@
 <main class="indexEleicoes">
     <div class="busca">
         <p class="titulo">Painel de Eleições</p>
-        @if ($errors->any())
+        @if ($errors->any() || session('mensagem'))
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                     @endforeach
+                    @if(session('mensagem'))
+                    <li>{{ session('mensagem') }}</li>
+                    @endif
                 </ul>
             </div><br />
         @endif

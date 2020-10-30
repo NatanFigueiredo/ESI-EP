@@ -25,8 +25,12 @@ Route::get('/', function () {
 
 Route::get('/login',[LoginsController::class,'create']);
 Route::post('/login',[LoginsController::class,'buscaLogin'])->name('login');
+Route::get('/senha/{id}',[LoginsController::class,'edit'])->name('alterarsenha');
+Route::post('/senha/{id}',[LoginsController::class,'update'])->name('salvarsenha');
+Route::get('/sair',[LoginsController::class,'logout']);
 
 Route::get('/principal',[TelaPrincipalController::class,'create']);
+Route::get('/pessoa/meusdados/{id}',[PessoasController::class,'meusdados'])->name('meusdados');
 
 Route::get('/pessoa',[PessoasController::class,'create']);
 Route::get('/pessoa/novo',[PessoasController::class,'createNew']);
@@ -44,5 +48,7 @@ Route::get('/eleicoes/novaChapa/{id}',[ChapasController::class,'create'])->name(
 Route::post('/eleicoes/novaChapa/{id}',[ChapasController::class,'store'])->name('eleicao.salvarchapa');
 
 Route::get('/eleicoes/votacao/{eleicao}',[VotacaosController::class,'create'])->name('eleicao.votacao');
+Route::post('/eleicoes/votacao/{eleicao}',[VotacaosController::class,'store'])->name('eleicao.registravoto');
 
 Route::get('/votacao',[VotacaosController::class,'create']);
+
