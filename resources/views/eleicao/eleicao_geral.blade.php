@@ -40,6 +40,56 @@
                         <input type="date" class="form-control" name="data_fim">
                     </div>
                 </div>
+                <div class="form-row justify-content-center divcargos">
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkGeral">
+                        <label class="" for="checkGeral">
+                            Diretoria Geral
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkFiscal">
+                        <label class="" for="defaultCheck1">
+                            Conselho Fiscal
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkJF">
+                        <label class="" for="defaultCheck1">
+                            Diretoria do Juridico-Financeiro
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkCMKT">
+                        <label class="" for="defaultCheck1">
+                            Diretoria de Comunicação e Marketing
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkInovaTec">
+                        <label class="" for="defaultCheck1">
+                            Diretoria de Inovação e Tecnologia
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkGP">
+                        <label class="" for="defaultCheck1">
+                            Diretoria de Gestão de Pessoas
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkPed">
+                        <label class="" for="defaultCheck1">
+                            Diretoria Pedagógica
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="" type="checkbox" value="1" name="checkProj">
+                        <label class="" for="checkProj">
+                            Diretoria de Projetos
+                        </label>
+                    </div>
+                </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group botoes">
                         <button type="submit" class="salvar">
@@ -86,18 +136,18 @@
                         </a>
 
                         @if($e->flag_status == 1)
-                        <a href=" ">
+                        <a href="{{ route('eleicao.chapa',['id' => $e->id]) }}">
                             <img class="icon" src="{!! asset('img/icons/candidatar.png') !!}">
                         </a>
                         @elseif($e->flag_status == 2)
-                        <a href=" ">
+                        <a href="{{ route('eleicao.votacao',['eleicao' => $e->id]) }}">
                             <img class="icon" src="{!! asset('img/icons/star.png') !!}">
                         </a>
-                        @endif
-
+                        @elseif($e->flag_status == 0)
                         <a href="" >
                             <img class="icon" src="{!! asset('img/icons/result.png') !!}">
                         </a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

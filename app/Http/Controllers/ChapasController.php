@@ -54,7 +54,7 @@ class ChapasController extends Controller
         $chapa = Chapa::create($storeData);
 
         $cpf = $request->cpf_t;        
-        $titular = Pessoa::where('cpf',$cpf)->firstOrFail();;
+        $titular = Pessoa::where('cpf',$cpf)->firstOrFail();
         $storeData = [
             'candidato' => $titular->id,
             'chapa' => $chapa->id,
@@ -64,7 +64,7 @@ class ChapasController extends Controller
         if ($request->cpf_s)
         {
             $cpf = $request->cpf_s;        
-            $titular = Pessoa::where('cpf',$cpf)->firstOrFail();;
+            $titular = Pessoa::where('cpf',$cpf)->firstOrFail();
             $storeData = [
                 'candidato' => $titular->id,
                 'chapa' => $chapa->id,
