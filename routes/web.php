@@ -43,4 +43,6 @@ Route::post('/eleicoes/edit/{id}',[EleicaosController::class,'update'])->name('e
 Route::get('/eleicoes/novaChapa/{id}',[ChapasController::class,'create'])->name('eleicao.chapa');
 Route::post('/eleicoes/novaChapa/{id}',[ChapasController::class,'store'])->name('eleicao.salvarchapa');
 
+Route::get('/eleicoes/votacao/{eleicao}',[VotacaosController::class,'create'])->name('eleicao.votacao');
+
 Route::get('/votacao',[VotacaosController::class,'create']);

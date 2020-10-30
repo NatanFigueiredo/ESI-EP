@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidato;
+use App\Models\Cargo;
 use App\Models\Chapa;
+use App\Models\Eleicao;
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
 class VotacaosController extends Controller
@@ -22,9 +26,43 @@ class VotacaosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('votacao');
+        $eleicao = Eleicao::findOrFail($id);
+        $arrayFinal = array();
+        $cargos = Cargo::all()->where('eleicao',$id);
+        foreach($cargos as $c)
+        {   
+            $cargosFinais = [
+                'id' => $c->id,
+                'cargo' => $c->cargo,
+            ];
+            $chapasCargo = array();
+            $chapas = Chapa::all()->where('cargo',$c->id);
+            foreach ($chapas as $ch)
+            {   
+                $chapaFinal = [
+                    'id' => $ch->id,
+                    'nome' => $ch->nome,
+                ];
+                $candidatos = Candidato::all()->where('chapa',$ch->id);
+                foreach ($candidatos as $ca)
+                {
+                    $pessoa = Pessoa::where('id',$ca->candidato)->first();
+                    $nome = (isset($pessoa->nomesocial)) ? $pessoa->nomesocial : $pessoa->nomecivil ;
+
+                    if (strcmp($ca->posicao, 'Titular') == 0)
+                        $chapaFinal['titular'] = $nome;
+                    else
+                        $chapaFinal['suplente'] = $nome;
+                }
+                $chapasCargo[] = $chapaFinal;
+            }
+            $cargosFinais['chapas'] = $chapasCargo;
+            $arrayFinal[] = $cargosFinais;
+        }
+
+        return view('eleicao.votacao',compact('eleicao'),compact('arrayFinal'));
     }
 
     /**
