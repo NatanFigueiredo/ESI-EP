@@ -27,10 +27,14 @@ class PessoasController extends Controller
      */
     public function create()
     {
+        if (!session('id')) 
+            return redirect('/login');
         return $this->index();
     }
     public function createNew()
     {
+        if (!session('id')) 
+            return redirect('/login');
         return view('pessoa.pessoa_novo');
     }
 
@@ -67,7 +71,14 @@ class PessoasController extends Controller
         return redirect('/pessoa');
     }
 
-    public function buscaCPF($cpf){
+    public function meusdados($id){
+        if (session('id') != $id )
+            redirect('/principal');
+
+        $pessoa = Pessoa::findOrFail($id);
+        $temp = $this->convertStatus($pessoa->flag_status);
+        $pessoa->flag_status = $temp;
+        return view('pessoa.meus_dados', compact('pessoa'));
     }
 
     public function edit($id)

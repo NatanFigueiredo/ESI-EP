@@ -27,6 +27,8 @@ class ChapasController extends Controller
      */
     public function create($id)
     {   
+        if (!session('id')) 
+            return redirect('/login');
         $cargos = Cargo::all()->where('eleicao',$id);
         return view('eleicao.chapa',compact('cargos'),compact('id'));
     }

@@ -27,6 +27,8 @@ class EleicaosController extends Controller
      */
     public function create()
     {
+        if (!session('id')) 
+            return redirect('/login');
         return $this->index();
     }
 

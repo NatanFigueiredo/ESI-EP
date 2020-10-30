@@ -39,7 +39,7 @@
                         Meu Perfil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Dados Pessoais</a>
+                            <a class="dropdown-item" href="{{ url('/pessoa/meusdados',['id' => session('id')]) }}">Dados Pessoais</a>
                         </div>
                     </li>
 
@@ -55,13 +55,13 @@
 
                     <div class="spacer"></div>
 
-                    <li class="nav-item dropdown userMenu">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $nome ?? '' or 'Usuário desconhecido' }}
+                        Usuário
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Alterar senha</a>
-                            <a class="dropdown-item" href="#">Sair</a>
+                            <a class="dropdown-item" href="{{ url('/senha',['id' => session('id')]) }}">Alterar senha</a>
+                            <a class="dropdown-item" href="{{ url('/sair') }}">Sair</a>
                         </div>
                     </li>
                 </ul>

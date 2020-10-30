@@ -4,13 +4,13 @@
 <main class="principal">
     <div class="content">
         <div class="recepcao">
-            <div class="titulo"> <span>Oi {{ $nome ?? '{nome}' }}!</span> </div>
+            <div class="titulo"> <span>Oi! Tudo bem?</span> </div>
             <div class="titulo"> <span>Bem vinde ao SysCPE</span> </div>
         </div>
         <div class="atalhos">
             <p class="texto">Aqui estão alguns atalhos que podem ser uteis para você</p>
-            <a href="" class="btn btn-primary">Meus Dados</a>
-            <button type="button" name="btnVotar" class="btn btn-primary">Votar em eleição</button>
+            <a href="{{ url('/pessoa/meusdados',['id' => session('id')]) }}" class="btn btn-primary mb-2">Meus Dados</a>
+            <a href="{{ url('/eleicoes') }}" class="btn btn-primary mt-2">Votar em eleição</a>
         </div>
     </div>
     <div class="atena">

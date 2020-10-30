@@ -23,6 +23,8 @@ class TelaPrincipalController extends Controller
      */
     public function create()
     {
+        if (!session('id')) 
+            return redirect('/login');
         return view('telaprincipal');
     }
 
