@@ -1,6 +1,5 @@
 @include('templates.header', ['titulo' => 'SysCPE - Eleições'])
 
-
 <main class="indexEleicoes">
     <div class="busca">
         <p class="titulo">Painel de Eleições</p>
@@ -14,16 +13,16 @@
             </div><br />
         @endif
         <div class="dadosEleicao">
-            <form action="{{ route('eleicao.novo') }}" method="post">
+            <form action="{{ route('eleicao.editar',['id' => $el->id]) }}" method="post">
                 @csrf
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-4">
                         <label for="titulo">Titulo da eleição:</label>
-                        <input type="text" class="form-control" name="titulo"> 
+                        <input type="text" class="form-control" name="titulo" value ="{{ $el->titulo }}"> 
                     </div>
                     <div class="form-group col-md-4">
                         <label for="status">Estado:</label>
-                        <select name="flag_status" class="form-control" id="status" disabled>
+                        <select name="flag_status" class="form-control" id="status">
                             <option value="0">Encerrada</option>
                             <option value="1">Aberta para candidatura</option>
                             <option value="2">Aberta para votação</option>
@@ -33,11 +32,11 @@
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label for="data_inicio">Data de Inicio:</label>
-                        <input type="date" class="form-control" name="data_inicio"> 
+                        <input type="date" class="form-control" name="data_inicio" value ="{{ $el->data_inicio}}"> 
                     </div>
                     <div class="form-group col-md-3">
                         <label for="data_fim">Data de Encerramento:</label>
-                        <input type="date" class="form-control" name="data_fim">
+                        <input type="date" class="form-control" name="data_fim" value="{{ $el->data_fim}}">
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
@@ -50,11 +49,11 @@
                         </a>
                     </div>
                 </div>
-            </form>
+            </form> 
         </div>
     </div>
-    <div class="table-responsive tabela">
-        <table class="table table-hover">
+    <div class="tabela table-responsive">
+        <table class="table table-hover ">
             <thead>
                 <tr>
                 <td>ID</td>
@@ -84,7 +83,7 @@
                         <a href="{{ route('eleicao.consultar',['id' => $e->id]) }} ">
                             <img class="icon" src="{!! asset('img/icons/edit.png') !!}">
                         </a>
-
+                        
                         @if($e->flag_status == 1)
                         <a href=" ">
                             <img class="icon" src="{!! asset('img/icons/candidatar.png') !!}">
