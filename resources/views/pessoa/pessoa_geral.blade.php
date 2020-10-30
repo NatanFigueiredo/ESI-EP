@@ -1,29 +1,33 @@
-@include('templates.header')
+@include('templates.header', ['titulo' => 'SysCPE - Pessoas'])
 
 
 <main class="indexPessoas">
     <div class="busca">
         <p class="titulo">Painel de pessoas da entidade</p>
         <form action="" method="get">
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" class="textBox"> 
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" class="textBox"> 
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="funcao">Função</label>
+                    <input type="text" class="form-control" id="funcao">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="funcao">Função</label>
-                <input type="text" class="form-control" id="funcao">
-            </div>
-            <div class="botoes">
-                <a href=" {{ url('/pessoa/novo') }} " >
-                    <img class="icon" src="{!! asset('img/icons/plus.png') !!}">
-                </a>
-                <a href="" >
-                    <img class="icon" src="{!! asset('img/icons/search.png') !!}">
-                </a>
+            <div class="form-row justify-content-center">
+                <div class="botoes">
+                    <a href=" {{ url('/pessoa/novo') }} " >
+                        <img class="icon" src="{!! asset('img/icons/plus.png') !!}">
+                    </a>
+                    <a href="" >
+                        <img class="icon" src="{!! asset('img/icons/search.png') !!}">
+                    </a>
+                </div>
             </div>
         </form>
     </div>
-    <div class="tabela">
+    <div class="tabela table-responsive">
         <table class="table table-responsive-xl">
             <thead>
                 <tr class="table-warning">

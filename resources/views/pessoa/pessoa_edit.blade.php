@@ -1,5 +1,4 @@
-@include('templates.header')
-
+@include('templates.header', ['titulo' => 'SysCPE - Pessoas'])
 <main class="dadosPessoa">
 
     <div class="titulo"> 

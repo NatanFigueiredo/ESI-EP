@@ -14,11 +14,12 @@
     {{-- CSS de Pessoa --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/pessoa.css') }}">
     {{-- CSS de Eleicao --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/eleicao.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/chapa.css') }}">
     {{-- CSS de votacao --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/votacao.css') }}">
 
-    <title>Document</title>
+    <title>{{ $titulo }}</title>
 </head>
 <body>
     <header class="header">

@@ -1,4 +1,4 @@
-main.indexPessoas, main.indexEleicoes{
+main.indexPessoas{
     display: flex;
     flex-direction: column;
 

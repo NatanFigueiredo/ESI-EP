@@ -16,7 +16,7 @@ class EleicaosController extends Controller
     public function index()
     {
         $eleicoes = Eleicao::all();
-        return view('eleicao.eleicao_geral',compact($eleicoes));
+        return view('eleicao.eleicao_geral',compact('eleicoes'));
     }
 
     /**
@@ -43,8 +43,7 @@ class EleicaosController extends Controller
             'titulo' => 'required',
         ]);
         $eleicao = Eleicao::create($storeData);
-
-        return redirect('/eleicao')->with('completed','Eleição registrada');
+        return redirect('/eleicoes')->with('completed','Eleição registrada');
     }
 
     /**
@@ -66,15 +65,9 @@ class EleicaosController extends Controller
      */
     public function edit($id) //Deve retornar só um elemento, tá blz
     {
-        $eleicao = Eleicao::findOrFail($id)->where('status',1);
-        return view ('eleicao.edit',compact('eleicao'));
-        /*$eleicaoDB = DB::table('eleicoes')->where('status',1)->where('ideleicao',$id);
-        $eleicao = new Eleicao;
-        $eleicao->fill([
-            'data_inicio' => $eleicaoDB->data_inicio, 
-            'data_fim' => $eleicaoDB->data_fim, 
-            'titulo' => $eleicaoDB->titulo,
-            'flag_status' => $eleicaoDB->flag_status]);*/
+        $el = Eleicao::findOrFail($id);
+        $eleicoes = Eleicao::all();
+        return view ('eleicao.eleicao_edit',compact('el'),compact('eleicoes'));
     }
 
     /**
@@ -93,8 +86,20 @@ class EleicaosController extends Controller
             'flag_status' => 'required',
         ]);
         Eleicao::whereId($id)->update($updateData);
+        print_r($updateData);
 
-        return redirect('/eleicao')->with('completed','Eleição atualizada');
+        return redirect('/eleicoes')->with('completed','Eleição atualizada');
     }
 
+    public function convertStatus($data)
+    {
+        switch($data){
+            case 0: return "Encerrada";
+                break;
+            case 1: return "Aberta para candidatura";
+                break;
+            case 2: return "Aberta para votar";
+                break;
+        }
+    }
 }

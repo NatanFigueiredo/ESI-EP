@@ -1,4 +1,4 @@
-@include('templates.header')
+@include('templates.header', ['titulo' => 'SysCPE - Principal'])
 
 
 <main class="principal">
