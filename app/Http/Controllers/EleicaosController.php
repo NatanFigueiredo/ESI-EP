@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cargo;
 use App\Models\Eleicao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,79 @@ class EleicaosController extends Controller
             'data_fim' => 'required',
             'titulo' => 'required',
         ]);
+
+        print_r($request->all());
+        if($request->checkGeral)
+            print_r('deu');
+        if($request->checkFiscal)
+            print_r('deu');
+
         $eleicao = Eleicao::create($storeData);
+
+        if($request->checkGeral == 1){
+            $storeData = [
+                'cargo' => "Diretoria Geral",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkFiscal== 1){
+            $storeData = [
+                'cargo' => "Conselho Fiscal",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkJF== 1){
+            $storeData = [
+                'cargo' => "Diretoria do Juridico-Financeiro",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkCMKT== 1){
+            $storeData = [
+                'cargo' => "Diretoria de Comunicação e Marketing",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkCMKT== 1){
+            $storeData = [
+                'cargo' => "Diretoria de Comunicação e Marketing",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkInovaTec== 1){
+            $storeData = [
+                'cargo' => "Diretoria de Inovação e Tecnologia",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkGP== 1){
+            $storeData = [
+                'cargo' => "Diretoria de Gestão de Pessoas",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkPed== 1){
+            $storeData = [
+                'cargo' => "Diretoria Pedagógica",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+        if($request->checkProj== 1){
+            $storeData = [
+                'cargo' => "Diretoria de Projetos",
+                'eleicao' => $eleicao->id,
+            ];
+            $cargo = Cargo::create($storeData);
+        }
+
         return redirect('/eleicoes')->with('completed','Eleição registrada');
     }
 
