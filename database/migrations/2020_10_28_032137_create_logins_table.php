@@ -19,7 +19,7 @@ class CreateLoginsTable extends Migration
             $table->string('login',45);
             $table->string('senha',100);
             $table->integer('status',)->default('1');
-            $table->date('lastLogin');
+            $table->date('lastLogin')->default(date('d-m-Y'));
             $table->integer('level',)->default('1');
             $table->timestamps();
             $table->string('token_access')->nullable();

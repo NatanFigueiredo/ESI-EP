@@ -15,9 +15,8 @@ class CreateChapasTable extends Migration
     {
         Schema::create('chapas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('eleicao')->constrained('eleicaos')->onDelete('cascade');
+            $table->foreignId('cargo')->constrained('cargos')->onDelete('cascade');
             $table->string('nome',50);
-            $table->string('cargo',100);
             $table->integer('votos',)->default('0');
             $table->integer('flag_status',)->default('1');
             $table->timestamps();
